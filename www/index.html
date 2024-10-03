@@ -46,6 +46,26 @@
         <p><img src="/.netlify/images/?url=/images/bay-bridge.jpg&width=200" alt="A photo of the Bay Bridge in San Francisco" /></p>
       </section>
 
+      <section>
+        <div class="panel">
+          <button id="ccc-vote">Pick me, pick me!</button>
+          <div>
+            <span>Count:</span>
+            <b id="ccc-vote-count">0</b>
+          </div>
+        </div>
+        <script>
+          const button = document.getElementById('ccc-vote');
+          const count = document.getElementById('ccc-vote-count');
+          button.addEventListener('click', async (event) => {
+            const response = await fetch('/api/count', {
+              method: 'POST',
+            });
+            count.textContent = await response.text();
+          });
+        </script>
+      </section>
+
       <netlify-edge-include href="https://compose-challenge.netlify.app/partials/add-blob-storage">
       </netlify-edge-include>
     </main>
